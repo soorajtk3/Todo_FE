@@ -1,13 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState('');
-  removeItem = (key) => {
-    setTodos();
-  };
+  // removeItem = (key) => {
+  //   setTodos();
+  // };
   return (
     <div className='app'>
       <div className='subHeading'>
@@ -40,7 +41,7 @@ function App() {
                 {value}
                 <button
                   onClick={() => {
-                    removeItem(key);
+                  
                   }}
                   className='btn btn-primary '
                 >
