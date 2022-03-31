@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button';
 function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState('');
-  const removeItem = (index) => {
-    setTodos(toDos.filter((item,index)=>index!==index));
+  const removeItem = (key) => {
+    setTodos(toDos.filter((value,index)=>index!==key));
   };
   return (
     <div className='app'>
@@ -15,9 +15,10 @@ function App() {
         <br />
         <h2>ToDo List </h2>
       </div>
-      <h1>Todo List</h1>
 
       <div className='input form-control'>
+      
+
         <input
           value={toDo}
           onChange={(e) => setTodo(e.target.value)}
