@@ -6,9 +6,9 @@ import Button from 'react-bootstrap/Button';
 function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState('');
-  // removeItem = (key) => {
-  //   setTodos();
-  // };
+  const removeItem = (index) => {
+    setTodos(toDos.filter((item,index)=>index!==index));
+  };
   return (
     <div className='app'>
       <div className='subHeading'>
@@ -33,7 +33,7 @@ function App() {
         Add
       </button>
 
-      {toDos.map((value, key) => {
+      {toDos.map((value, index) => {
         return (
           <div>
             <ul>
@@ -41,12 +41,12 @@ function App() {
                 {value}
                 <button
                   onClick={() => {
-                  
+                  removeItem(index)
                   }}
                   className='btn btn-primary '
                 >
                   Delete
-                </button>{' '}
+                </button>
               </li>
             </ul>
           </div>
