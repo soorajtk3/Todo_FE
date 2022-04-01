@@ -18,11 +18,6 @@ body {
   text-align: center;
 }
 
-.app h1,
-h2 {
-  color: white;
-}
-
 .app .input {
   display: flex;
   justify-content: center;
@@ -87,4 +82,7 @@ h2 {
 }
 .b1 {
   margin-right: 3px;
+}
+.donebtn {
+  margin-left: 8px;
 }

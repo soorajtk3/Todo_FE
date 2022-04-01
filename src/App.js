@@ -1,24 +1,28 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState('');
+  const [complete, setComplete] = useState([]);
+
   const removeItem = (key) => {
-    setTodos(toDos.filter((value,index)=>index!==key));
+    setTodos(toDos.filter((value, index) => index !== key));
+  };
+  const completedTask = (ind) => {
+    const completeTask = toDos.filter((item, index) => index === ind);
+    setComplete(completeTask[0]);
   };
   return (
     <div className='app'>
       <div className='subHeading'>
         <br />
-        <h2>ToDo List </h2>
+        <h1>ToDo List </h1>
       </div>
 
       <div className='input form-control'>
-      
-
         <input
           value={toDo}
           onChange={(e) => setTodo(e.target.value)}
@@ -42,15 +46,30 @@ function App() {
                 {value}
                 <button
                   onClick={() => {
-                  removeItem(index)
+                    removeItem(index);
                   }}
                   className='btn btn-primary '
                 >
                   Delete
                 </button>
+                <button
+                  onClick={() => completedTask(index)}
+                  className='btn btn-primary donebtn'
+                >
+                  Done
+                </button>
               </li>
             </ul>
           </div>
+        );
+      })}
+
+      <h2>Completed Task</h2>
+      {complete.map((value, index) => {
+        return (
+          <ul>
+            <li>{value}</li>
+          </ul>
         );
       })}
     </div>
