@@ -13,7 +13,10 @@ function App() {
   };
   const completedTask = (ind) => {
     const completeTask = toDos.filter((item, index) => index === ind);
-    setComplete(completeTask[0]);
+    console.log(completeTask[0]);
+    setComplete([...complete, completeTask]);
+
+    setTodos(toDos.filter((value, index) => index !== ind));
   };
   return (
     <div className='app'>
