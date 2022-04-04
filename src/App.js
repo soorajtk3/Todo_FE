@@ -9,6 +9,9 @@ function App() {
   const [complete, setComplete] = useState([]);
   const instance = axios.create({ baseURL: 'http://localhost:3001' });
 
+  const add = (e) => {
+    setTodo(e.target.value);
+  };
   const removeItem = (key) => {
     setTodos(toDos.filter((value, index) => index !== key));
   };
@@ -28,15 +31,23 @@ function App() {
 
       <div className='input form-control'>
         <input
+          name='Todo'
           value={toDo}
-          onChange={(e) => setTodo(e.target.value)}
+          onChange={add}
           type='text'
           placeholder='🖊️ Add item...'
         />
       </div>
       <br />
       <button
-        onClick={() => setTodos([...toDos, toDo])}
+        onClick={() =>
+          setTodos(
+            [...toDos, toDo],
+            instance.post('/test', {
+              toDo,
+            })
+          )
+        }
         className='b1 btn btn-primary '
       >
         Add
