@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
@@ -11,9 +11,19 @@ function App() {
 
   const add = (e) => {
     setTodo(e.target.value);
+
+    instance
+      .post('/test', {
+        toDo,
+      })
+      .then((res) => {
+        setTodos([...toDos, res.data]);
+      });
   };
+
   const removeItem = (key) => {
     setTodos(toDos.filter((value, index) => index !== key));
+    instance.delete('/delete', {});
   };
   const completedTask = (ind) => {
     const completeTask = toDos.filter((item, index) => index === ind);
