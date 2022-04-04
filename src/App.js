@@ -7,13 +7,14 @@ function App() {
   const [toDos, setTodos] = useState([]);
   const [toDo, setTodo] = useState('');
   const [complete, setComplete] = useState([]);
+  const instance = axios.create({ baseURL: 'http://localhost:3001' });
 
   const removeItem = (key) => {
     setTodos(toDos.filter((value, index) => index !== key));
   };
   const completedTask = (ind) => {
     const completeTask = toDos.filter((item, index) => index === ind);
-    console.log(completeTask[0]);
+
     setComplete([...complete, completeTask]);
 
     setTodos(toDos.filter((value, index) => index !== ind));
