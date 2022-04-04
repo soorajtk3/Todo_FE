@@ -29,8 +29,15 @@ function App() {
     const completeTask = toDos.filter((item, index) => index === ind);
 
     setComplete([...complete, completeTask]);
+    instance
+      .post('/complete', {
+        ind,
+      })
+      .then((res) => {
+        setComplete([...completedTodoTask, res.data]);
 
     setTodos(toDos.filter((value, index) => index !== ind));
+      
   };
   return (
     <div className='app'>
